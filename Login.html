@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.min.js" type="application/javascript"></script>
+    <title>Login &#128512;&#128512;&#128512;</title>
+</head>
+<body>
+    <div id="Main">
+        <ul>
+            <li>Home</li>
+            <li>Music</li>
+            <li>Movie</li>
+            <li>Search<input v-model="keyword" width="100px"><button @click="click_search">Search</button></li>
+        </ul>
+        <p>{{Jsoninfo}}</p>
+    </div>
+    <script>
+        new Vue({
+            el:'#Main',
+            data:{
+                page:3,
+                keyword:'',
+                Jsoninfo:'',
+            },
+            methods:{
+                click_search:function(){
+                    this.get_api_info();
+                },
+                get_api_info:function(){
+                    let apiUrl = `https://cj.lziapi.com/api.php/provide/vod/?ac=list&page=${this.page}`;
+                    if(this.keyword){
+                        apiUrl += `&wd=${encodeURIComponent(this.keyword)}`;
+                    }
+                    const proxyUrl = 'https://api.allorigins.win/raw?url=';
+                    const finalUrl = proxyUrl + encodeURIComponent(apiUrl);
+                    //(fetch) JavaScript 接口
+                    fetch(finalUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('网络响应不正常');
+                        }
+                        return response.json()
+                    })
+                    .then(data => {
+                        alert('From json analysis data'); // 调试
+                        if(!data.list||data.list.length==0){
+                            alert('From json analysis data list is null'); 
+                            if(this.page>1){
+                                this.page-=1;
+                                this.get_api_info();
+                                return;
+                            }
+                        }
+                        this.Jsoninfo = JSON.stringify(data, null, 2);
+                    })
+                }
+            }
+        });
+    </script>
+</body>
+</html>
