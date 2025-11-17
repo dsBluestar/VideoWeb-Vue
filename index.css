@@ -1,0 +1,338 @@
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1a2a3a 0%, #2c3e50 100%);
+    color: #e0e0e0;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+#Main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 导航栏样式 */
+#Main ul {
+    display: flex;
+    list-style: none;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
+}
+
+#Main ul li {
+    margin-right: 25px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+#Main ul li:not(:last-child):hover {
+    background: rgba(74, 144, 226, 0.3);
+    transform: translateY(-2px);
+}
+
+#Main ul li:last-child {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    padding: 0;
+}
+
+#Main ul li:last-child input {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px 0 0 8px;
+    padding: 10px 15px;
+    color: white;
+    width: 200px;
+    transition: all 0.3s ease;
+}
+
+#Main ul li:last-child input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.25);
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3);
+}
+
+#Main ul li:last-child input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#Main ul li:last-child button {
+    background: #4a90e2;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+#Main ul li:last-child button:hover {
+    background: #3a7bc8;
+    transform: translateY(-1px);
+}
+
+/* 视频播放器样式 */
+#player {
+    width: 100%;
+    max-height: 500px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background: #000;
+}
+
+/* 标题和分页样式 */
+h3 {
+    font-size: 1.8rem;
+    margin: 25px 0 20px;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h3:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, #4a90e2, #63b3ed);
+    border-radius: 3px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    gap: 15px;
+}
+
+.pagination button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: rgba(74, 144, 226, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 影视列表样式 */
+.movie-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.movie-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.movie-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: #ffffff;
+    font-weight: 600;
+    line-height: 1.4;
+    border-left: 4px solid #4a90e2;
+    padding-left: 10px;
+}
+
+.movie-card p {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #b0b0b0;
+}
+
+.movie-card p strong {
+    color: #d0d0d0;
+}
+
+.movie-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 10px 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.no-image {
+    width: 100%;
+    height: 180px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+}
+
+/* 剧集按钮样式 */
+.episodes {
+    margin-top: 15px;
+}
+
+.episodes strong {
+    display: block;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.episode-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.episode-btn {
+    background: rgba(74, 144, 226, 0.2);
+    border: 1px solid rgba(74, 144, 226, 0.3);
+    color: #a0c8f0;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+}
+
+.episode-btn:hover {
+    background: rgba(74, 144, 226, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    #Main {
+        padding: 15px;
+    }
+    
+    #Main ul {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    #Main ul li {
+        margin-right: 0;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    #Main ul li:last-child {
+        margin-left: 0;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    #Main ul li:last-child input {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 5px;
+    }
+    
+    #Main ul li:last-child button {
+        width: 100%;
+        border-radius: 8px;
+    }
+    
+    .movie-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .pagination {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .pagination button {
+        width: 100%;
+        max-width: 200px;
+        justify-content: center;
+    }
+}
+
+/* 加载动画 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.movie-card {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
